@@ -46,13 +46,13 @@ const Home = () => {
     <div className="container text-center col-6 vh-100">
       <h1>Todo List</h1>
       <input
-        className="w-100"
+        className="w-100 form-control"
         value={newTodo}
         placeholder={todoList.length <= 0 ? "No tasks, add a task!" : "Add a new todo"}
         onChange={(e) => setNewTodo(e.target.value)}
         onKeyUp={(e) => normalizeTodo(e)}
       />
-      <ul className="list-group mt-3">
+      <ul className="list-group mt-3 shadow">
         {todoList.map((todo, index) => {
           return (
             <li
