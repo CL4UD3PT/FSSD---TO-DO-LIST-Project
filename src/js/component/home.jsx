@@ -19,6 +19,7 @@ const Home = () => {
 
   const handleMouseEnter = (index) => {
     setVisible((prevState) => {
+      console.log(prevState)
       const newState = [...prevState];
       newState[index] = true;
       return newState;
@@ -47,7 +48,7 @@ const Home = () => {
       <input
         className="w-100"
         value={newTodo}
-        placeholder="Add a new todo"
+        placeholder={todoList.length <= 0 ? "No tasks, add a task!" : "Add a new todo"}
         onChange={(e) => setNewTodo(e.target.value)}
         onKeyUp={(e) => normalizeTodo(e)}
       />
