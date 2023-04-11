@@ -7,12 +7,12 @@ const Home = () => {
   const [visible, setVisible] = useState([]);
 
   const normalizeTodo = (e) => {
+    let newTodo = e.target.value.toLowerCase();
     if (
       e.key == "Enter" &&
-      newTodo !== "" &&
-      todoList.indexOf(newTodo.toLowerCase()) == -1
+      newTodo !== ""
     ) {
-      setTodoList([...todoList, e.target.value]);
+      setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
       setNewTodo("");
     }
   };
