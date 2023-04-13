@@ -6,29 +6,41 @@ const Home = () => {
   const [todoList, setTodoList] = useState([]);
   const [visible, setVisible] = useState([]);
 
-  const normalizeTodo = (e) => {
-    let newTodo = e.target.value.toLowerCase();
+  const validateTodo = (e) => {
 
-    if (e.key == "Enter" &&  newTodo !== "") {
-      setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
+    let newTodo = e.target.value.toLowerCase();
+    newTodo = normalizeTodo(newTodo);
+    console.log(newTodo);
+
+    if (e.key == "Enter" &&  newTodo !== "" && todoList.indexOf(newTodo) === -1) {
+      setTodoList([...todoList, newTodo]);
       setNewTodo("");
     }
   };
 
+  const normalizeTodo = (todo) => {
+    return todo.charAt(0).toUpperCase() + newTodo.slice(1);
+  }
+
   const handleMouseEnter = (index) => {
-    setVisible([...visible], visible[index] = true);
+    setVisible((visible) => {
+      const newState = [...visible];
+      newState[index] = true;
+      return newState;
+    });
   };
 
   const handleMouseLeave = (index) => {
-    setVisible([...visible], visible[index] = false)
+    setVisible((visible) => {
+      const newState = [...visible];
+      newState[index] = false;
+      return newState;
+    });
   };
 
   const removeTodo = (index) => {
-    setTodoList(() => {
-      const newList = [...todoList];
-      newList.splice(index, 1);
-      return newList;
-    });
+    setTodoList(() => todoList.filter((_, i) => i !== index));
+    setVisible(() => visible.filter((_,i) => i !== index));
   };
 
   return (
@@ -39,7 +51,7 @@ const Home = () => {
         value={newTodo}
         placeholder={todoList.length <= 0 ? "No tasks, add a task!" : "Add a new todo"}
         onChange={(e) => setNewTodo(e.target.value)}
-        onKeyUp={(e) => normalizeTodo(e)}
+        onKeyUp={(e) => validateTodo(e)}
       />
       <ul className="list-group mt-3 shadow">
         {todoList.map((todo, index) => {
