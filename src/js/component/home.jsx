@@ -8,30 +8,19 @@ const Home = () => {
 
   const normalizeTodo = (e) => {
     let newTodo = e.target.value.toLowerCase();
-    if (
-      e.key == "Enter" &&
-      newTodo !== ""
-    ) {
+
+    if (e.key == "Enter" &&  newTodo !== "") {
       setTodoList([...todoList, newTodo.charAt(0).toUpperCase() + newTodo.slice(1)]);
       setNewTodo("");
     }
   };
 
   const handleMouseEnter = (index) => {
-    setVisible((prevState) => {
-      console.log(prevState)
-      const newState = [...prevState];
-      newState[index] = true;
-      return newState;
-    });
+    setVisible([...visible], visible[index] = true);
   };
 
   const handleMouseLeave = (index) => {
-    setVisible((prevState) => {
-      const newState = [...prevState];
-      newState[index] = false;
-      return newState;
-    });
+    setVisible([...visible], visible[index] = false)
   };
 
   const removeTodo = (index) => {
