@@ -3,18 +3,19 @@
 
 
 📝 Features
-- The tasks are added when the user press enter on the keyboard.
+- The task is added when the user press enter on the keyboard.
 - The delete icon shows only when the task is hovered.
-- The user can add as many tasks as it wants.
+- The user can add as many tasks as he wants.
 - When there is no tasks the list should say "No tasks, add a task"
 - There is no way to update a task, the user will have to delete and create again.
-
 
 🔥 Bonus
 - empty string task it's not allowed
 - all tasks are unique
 - task string is formatted with the first letter capitalized and all the remaining are lowercase
 
+⚠️ Attention
+In this example data it's not persistent. If the page is refreshed than all tasks are missed.
 
 ### Contributors
 This and many other projects are built by students as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
